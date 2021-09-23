@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level1 extends World
 {
+    private final float GRAVITY = 0.0667f;
+    private final GreenfootSound MUSIC = new GreenfootSound("zapsplat_024.mp3");
+    
     /**
      * Constructor for objects of class BrickWorld.
      * 
@@ -31,6 +34,14 @@ public class Level1 extends World
         addObject(door,1175,42);
         setPaintOrder(Player.class, Platform.class, Obstacle.class, Collectable.class,
             Door.class, HUD.class);
-        
+        addObject(new Floor(), 600, 760);
+        addObject(new BrickWall(), 1000, 500);
+        addObject(new SmBrickWall(), 800, 350);
+        addObject(new SmBrickWall(), 400, 650);
+        addObject(new SmBrickWall(), 1175,90);
+        addObject(new AcidRain(GRAVITY), 50, 21);
+        addObject(new Rock(GRAVITY), 21, 600);
+        addObject(new TrapDoor(GRAVITY), 500, 500);
+        addObject(new Bomb(GRAVITY), 100, 500);
     }
 }
