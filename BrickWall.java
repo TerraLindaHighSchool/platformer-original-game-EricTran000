@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BrickWall here.
+ * The BrickWall is a large platform that the player can stand on
  * 
  * @author (your name) 
  * @version (a version number or a date)

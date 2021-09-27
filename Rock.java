@@ -1,16 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Rock here.
+ * Rocks fall from the sky and land on the ground to damage the player
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Eric Tran 
+ * 9/22/2021
  */
 public class Rock extends Obstacle
 {
     private float yVelocity;
     private final float GRAVITY;
     
+    //causes object to fall unto a platform below
     public Rock(float gravity)
     {
         GRAVITY = gravity;
@@ -18,9 +19,15 @@ public class Rock extends Obstacle
     
     public void act()
     {
+        fall();
     }
     
     protected void fall()
     {
+        if(!isOnGround())
+        {
+            yVelocity += GRAVITY;
+            setLocation(getX(), getY() + (int) yVelocity);
+        }
     }
 }

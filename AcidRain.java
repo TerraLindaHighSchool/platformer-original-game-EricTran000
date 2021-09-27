@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class AcidRain here.
+ * Droplets that fall from the sky and damage the player
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Eric Tran
+ * 9/22/2021
  */
 public class AcidRain extends Obstacle
 {

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BrickWorld here.
+ * The first level
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Eric Tran
+ * 9/22/2021
  */
 public class Level1 extends World
 {
@@ -22,6 +22,10 @@ public class Level1 extends World
         prepare();
     }
     
+    public void act()
+    {
+        spawn();
+    }
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -43,5 +47,18 @@ public class Level1 extends World
         addObject(new Rock(GRAVITY), 21, 600);
         addObject(new TrapDoor(GRAVITY), 500, 500);
         addObject(new Bomb(GRAVITY), 100, 500);
+    }
+    
+    private void spawn()
+    {
+        if(Math.random() < 0.0025)
+        {
+            addObject(new Rock(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
+        }
+        
+        if(Math.random() < 0.01)
+        {
+            addObject(new AcidRain(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
+        }
     }
 }

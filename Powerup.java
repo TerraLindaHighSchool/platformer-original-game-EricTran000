@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Powerup here.
+ * A buff that enhcances stats
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Eric Tran
+ * 9/22/2021
  */
 public class Powerup extends HUD
 {
