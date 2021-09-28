@@ -26,6 +26,7 @@ public class Level1 extends World
     {
         spawn();
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -40,13 +41,19 @@ public class Level1 extends World
             Door.class, HUD.class);
         addObject(new Floor(), 600, 760);
         addObject(new BrickWall(), 1000, 500);
-        addObject(new SmBrickWall(), 800, 350);
+        addObject(new SmBrickWall(), 500, 340);
         addObject(new SmBrickWall(), 400, 650);
         addObject(new SmBrickWall(), 1175,90);
         addObject(new AcidRain(GRAVITY), 50, 21);
         addObject(new Rock(GRAVITY), 21, 600);
-        addObject(new TrapDoor(GRAVITY), 500, 500);
         addObject(new Bomb(GRAVITY), 100, 500);
+        addObject(new TrapDoor(GRAVITY), 750, 340);
+        addObject(new SmBrickWall(), 628, 579);
+        addObject(new SmBrickWall(), 564, 440);
+        addObject(new TrapDoor(GRAVITY), 780, 187);
+        addObject(new SmBrickWall(), 660, 187);
+        addObject(new SmBrickWall(), 900, 187);
+
     }
     
     private void spawn()
