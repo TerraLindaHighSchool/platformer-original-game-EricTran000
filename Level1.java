@@ -10,6 +10,11 @@ public class Level1 extends World
 {
     private final float GRAVITY = 0.0667f;
     private final GreenfootSound MUSIC = new GreenfootSound("zapsplat_024.mp3");
+    private final int SPEED = 3;
+    private final float JUMP_FORCE = 5.6f;
+    private final int MAX_HEALTH = 3;
+    private final int MAX_POWERUP = 3;
+    private final Class NEXT_LEVEL = Level2.class;
     
     /**
      * Constructor for objects of class BrickWorld.
@@ -33,26 +38,33 @@ public class Level1 extends World
      */
     private void prepare()
     {
-        Player player = new Player(3,5.6f, GRAVITY, 3, 3, Level2.class, MUSIC);
-        addObject(player,83,616);
+        Player player = new Player(SPEED, JUMP_FORCE,GRAVITY, MAX_HEALTH,
+                                   MAX_POWERUP, NEXT_LEVEL, MUSIC);
+                                   
+        addObject(player,50,750);
         Door door = new Door();
         addObject(door,1175,42);
         setPaintOrder(Player.class, Platform.class, Obstacle.class, Collectable.class,
             Door.class, HUD.class);
-        addObject(new Floor(), 600, 760);
+        addObject(new Floor(), 600, 800);
         addObject(new BrickWall(), 1000, 500);
-        addObject(new SmBrickWall(), 500, 340);
+        addObject(new SmBrickWall(), 200, 340);
         addObject(new SmBrickWall(), 400, 650);
         addObject(new SmBrickWall(), 1175,90);
         addObject(new AcidRain(GRAVITY), 50, 21);
-        addObject(new Rock(GRAVITY), 21, 600);
-        addObject(new Bomb(GRAVITY), 100, 500);
-        addObject(new TrapDoor(GRAVITY), 750, 340);
-        addObject(new SmBrickWall(), 628, 579);
-        addObject(new SmBrickWall(), 564, 440);
+        addObject(new Rock(GRAVITY), 490, 0);
+        addObject(new Bomb(GRAVITY), 1000, 450);
+        addObject(new TrapDoor(GRAVITY), 400, 340);
+        addObject(new SmBrickWall(), 600, 600);
+        addObject(new SmBrickWall(), 600, 340);
         addObject(new TrapDoor(GRAVITY), 780, 187);
         addObject(new SmBrickWall(), 660, 187);
         addObject(new SmBrickWall(), 900, 187);
+        addObject(new Gem(), 165, 150);
+        addObject(new SmBrickWall(), 165, 200);
+        addObject(new Gem(), 1150, 450);
+        addObject(new Bomb(GRAVITY), 300, 340);
+        addObject(new Bomb(GRAVITY), 490, 340);
 
     }
     
