@@ -15,6 +15,7 @@ public class Level3 extends World
     private final int MAX_HEALTH = 3;
     private final int MAX_POWERUP = 3;
     private final Class NEXT_LEVEL = WinSplash.class;
+    private int delay;
     
     /**
      * Constructor for objects of class BrickWorld.
@@ -62,6 +63,7 @@ public class Level3 extends World
         addObject(new Gem(), 150, 400);
         addObject(new Bomb(GRAVITY), 1160, 200);
         addObject(new Bomb(GRAVITY), 930, 350);
+        
 
         
     }
@@ -76,6 +78,12 @@ public class Level3 extends World
         if(Math.random() < 0.01)
         {
             addObject(new AcidRain(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
+        }
+        
+        delay++;
+        if(delay % 180 == 0)
+        {
+            addObject(new Arrow(GRAVITY), 600, 350);
         }
     }
 }
