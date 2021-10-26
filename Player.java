@@ -17,13 +17,18 @@ public class Player extends Actor
     private float yVelocity;
     private boolean isWalking;
     private boolean isJumping;
+    private boolean canDoubleJump;
     private boolean isFacingLeft;
+    private int timer;
     private final GreenfootImage[] WALK_ANIMATION;
     private final GreenfootImage STANDING_IMAGE;
     private final float JUMP_FORCE;
     private final float GRAVITY;
     private final Class NEXT_LEVEL;
     private final GreenfootSound Music;
+    
+    
+    private final int MAX_POWERUP;
     
     public Player(int speed,float jumpForce, float gravity, int maxHealth,
                   int maxPowerUp, Class nextLevel, GreenfootSound music)
@@ -33,6 +38,8 @@ public class Player extends Actor
         GRAVITY = gravity;
         NEXT_LEVEL = nextLevel;
         Music = music;
+        
+        MAX_POWERUP = maxPowerUp;
         
         healthCount = maxHealth;
         health = new Health[maxHealth];
@@ -60,6 +67,7 @@ public class Player extends Actor
         fall();
         onCollision();
         gameOver();
+        duration();
     }
     
     public void addedToWorld(World world)
@@ -121,13 +129,23 @@ public class Player extends Actor
             isWalking = false;
         }
     }
+    
     private void jump()
     {
-        if(Greenfoot.isKeyDown("space") && isOnGround())
+        if(Greenfoot.isKeyDown("space") && (isOnGround()))
         {
             yVelocity = JUMP_FORCE;
             isJumping = true;
+            
         }
+        
+        if(Greenfoot.isKeyDown("a") && (!isOnGround() && canDoubleJump))
+        {
+            yVelocity = JUMP_FORCE;
+            isJumping = true;
+            canDoubleJump = false;
+        }
+        
         
         if(isJumping && yVelocity > 0)
         {
@@ -139,6 +157,19 @@ public class Player extends Actor
             isJumping = false;
         }
     }
+    
+    private void duration()
+    {
+        if(canDoubleJump)
+        {
+            timer++;
+            if(timer % 7200 == 0)
+            {
+                canDoubleJump = false;
+            }
+        }
+    }
+    
     private void fall()
     {
         if(!isJumping && !isOnGround())
@@ -147,6 +178,7 @@ public class Player extends Actor
             yVelocity -= GRAVITY;
         }
     }
+    
     private void animator()
     {
         if(frame% (15 - 2 * speed) == 0)
@@ -193,7 +225,15 @@ public class Player extends Actor
             yVelocity = -1;
             fall();
         }
+        
+        if(isTouching(Gem.class))
+        {
+            removeTouching (Gem.class);
+            canDoubleJump = true;
+        }
+        
     }
+    
     private void mirrorImages()
     {
         for(int i = 0; i < WALK_ANIMATION.length; i++)
@@ -201,6 +241,7 @@ public class Player extends Actor
             WALK_ANIMATION[i].mirrorHorizontally();
         }
     }
+    
     private void gameOver()
     {
         if(healthCount == 0)
@@ -209,11 +250,11 @@ public class Player extends Actor
             Music.stop();
         }
     }
+
     private boolean isOnGround()
     {
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight() / 2,
                                             Platform.class);
         return ground != null;
     }
-
 }

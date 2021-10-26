@@ -15,6 +15,7 @@ public class Level1 extends World
     private final int MAX_HEALTH = 3;
     private final int MAX_POWERUP = 3;
     private final Class NEXT_LEVEL = Level2.class;
+    private int delay;
     
     /**
      * Constructor for objects of class BrickWorld.
@@ -78,6 +79,12 @@ public class Level1 extends World
         if(Math.random() < 0.01)
         {
             addObject(new AcidRain(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
+        }
+        
+        delay++;
+        if(delay % 180 == 0)
+        {
+            addObject(new Arrow(GRAVITY), 600, 350);
         }
     }
 }
