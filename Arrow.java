@@ -31,5 +31,7 @@ public class Arrow extends Obstacle
         xVelocity = -4;
         setLocation(getX() + (int) xVelocity, getY());
         removeOutOfBounds(this);
+        
     }
+    
 }

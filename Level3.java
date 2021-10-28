@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends World
 {
-    private final float GRAVITY = 0.0667f;
+    private final float GRAVITY = 0.09500f;
     private final GreenfootSound MUSIC = new GreenfootSound("incompetech_tribal.mp3");
     private final int SPEED = 3;
     private final float JUMP_FORCE = 5.6f;
@@ -50,40 +50,48 @@ public class Level3 extends World
         addObject(new Floor(), 600, 800);
         addObject(new BrickWall(), 504, 565);
         addObject(new SmBrickWall(), 1037, 687);
-        addObject(new SmBrickWall(), 900, 399);
+        addObject(new SmBrickWall(), 900, 409);
         addObject(new SmBrickWall(), 175,438);
         addObject(new AcidRain(GRAVITY), 50, 21);
         addObject(new Rock(GRAVITY), 490, 0);
-        addObject(new TrapDoor(GRAVITY), 400, 310);
-        addObject(new SmBrickWall(), 1140, 245);
+        addObject(new Crossbow(), 1160, 310);
         addObject(new SmBrickWall(), 552, 180);
         addObject(new SmBrickWall(), 768, 196);
         addObject(new SmBrickWall(), 268, 154);
         addObject(new Gem(), 230, 102);
-        addObject(new Gem(), 150, 400);
-        addObject(new Bomb(GRAVITY), 1160, 200);
+        addObject(new Gem(), 450, 300);
         addObject(new Bomb(GRAVITY), 930, 350);
-        
+        addObject(new Bomb(GRAVITY), 1160, 280);
 
-        
+        Crossbow crossbow = new Crossbow();
+        addObject(crossbow,1147,504);
+
+        Gem gem3 = new Gem();
+        addObject(gem3,668,170);
+        gem3.setLocation(970,163);
     }
     
     private void spawn()
     {
-        if(Math.random() < 0.0025)
+        if(Math.random() < 0.0020)
         {
-            addObject(new Rock(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
+            addObject(new Rock(GRAVITY), Greenfoot.getRandomNumber(800),-30);
         }
         
-        if(Math.random() < 0.01)
+        if(delay % 75 == 0)
         {
-            addObject(new AcidRain(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
+            addObject(new AcidRain(GRAVITY), 668, -30);
         }
         
         delay++;
         if(delay % 180 == 0)
         {
-            addObject(new Arrow(GRAVITY), 600, 350);
+            addObject(new Arrow(GRAVITY), 1100, 504);
+        }
+        
+        if(delay % 130 == 0)
+        {
+            addObject(new Arrow(GRAVITY), 1130, 310);
         }
     }
 }

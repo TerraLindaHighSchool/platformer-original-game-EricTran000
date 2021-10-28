@@ -78,6 +78,11 @@ public class Player extends Actor
         world.addObject(health[1], 72, 36);
         health[2] = new Health();
         world.addObject(health[2], 114, 36);
+        health[3] = new Health();
+    
+        
+        
+    
     }
     
     private void walk() 
@@ -232,6 +237,13 @@ public class Player extends Actor
             canDoubleJump = true;
         }
         
+        if(isTouching(HealingFish.class))
+        {
+            removeTouching (HealingFish.class);
+            {
+                healthCount++;
+            }
+        }
     }
     
     private void mirrorImages()
