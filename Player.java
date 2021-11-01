@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Player here.
+ * The character you control
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Eric Tran 
+ * @version 9/22/2021
  */
 public class Player extends Actor
 {
@@ -79,12 +79,14 @@ public class Player extends Actor
         health[2] = new Health();
         world.addObject(health[2], 114, 36);
         health[3] = new Health();
+        world.addObject(health[3], 156, 36);
+        
     
         
         
     
     }
-    
+    //responsible for moving the player
     private void walk() 
     {
         if(isWalking)
@@ -134,7 +136,7 @@ public class Player extends Actor
             isWalking = false;
         }
     }
-    
+    //allows the player to jump
     private void jump()
     {
         if(Greenfoot.isKeyDown("space") && (isOnGround()))
@@ -162,7 +164,7 @@ public class Player extends Actor
             isJumping = false;
         }
     }
-    
+    //sets a timer for double jump
     private void duration()
     {
         if(canDoubleJump)
@@ -174,7 +176,7 @@ public class Player extends Actor
             }
         }
     }
-    
+    //allows the player to fall
     private void fall()
     {
         if(!isJumping && !isOnGround())
@@ -183,7 +185,7 @@ public class Player extends Actor
             yVelocity -= GRAVITY;
         }
     }
-    
+    //animates the player
     private void animator()
     {
         if(frame% (15 - 2 * speed) == 0)
@@ -200,7 +202,7 @@ public class Player extends Actor
         }
         frame++;
     }
-    
+    //checks for collisions
     private void onCollision()
     {
         if(isTouching(Door.class))
@@ -237,15 +239,9 @@ public class Player extends Actor
             canDoubleJump = true;
         }
         
-        if(isTouching(HealingFish.class))
-        {
-            removeTouching (HealingFish.class);
-            {
-                healthCount++;
-            }
-        }
+        
     }
-    
+    //mirrors animations
     private void mirrorImages()
     {
         for(int i = 0; i < WALK_ANIMATION.length; i++)
@@ -253,7 +249,7 @@ public class Player extends Actor
             WALK_ANIMATION[i].mirrorHorizontally();
         }
     }
-    
+    //ends the game
     private void gameOver()
     {
         if(healthCount == 0)
@@ -262,7 +258,7 @@ public class Player extends Actor
             Music.stop();
         }
     }
-
+    //checks if the player is on ground
     private boolean isOnGround()
     {
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight() / 2,

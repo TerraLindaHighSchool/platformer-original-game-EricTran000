@@ -63,12 +63,11 @@ public class Level1 extends World
         addObject(new SmBrickWall(), 900, 187);
         addObject(new Gem(), 165, 150);
         addObject(new SmBrickWall(), 165, 200);
-        addObject(new Gem(), 1150, 450);
         addObject(new Bomb(GRAVITY), 300, 340);
         addObject(new Bomb(GRAVITY), 490, 340);
 
     }
-    
+    //spawns various objects
     private void spawn()
     {
         if(Math.random() < 0.0025)
@@ -81,10 +80,5 @@ public class Level1 extends World
             addObject(new AcidRain(GRAVITY), Greenfoot.getRandomNumber(1200),-30);
         }
         
-        delay++;
-        if(delay % 180 == 0)
-        {
-            addObject(new Arrow(GRAVITY), 600, 350);
-        }
     }
 }

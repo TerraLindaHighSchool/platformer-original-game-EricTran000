@@ -9,10 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Level3 extends World
 {
     private final float GRAVITY = 0.09500f;
-    private final GreenfootSound MUSIC = new GreenfootSound("incompetech_tribal.mp3");
+    private final GreenfootSound MUSIC = new GreenfootSound("Jazz edit 1 audacity.mp3");
     private final int SPEED = 3;
     private final float JUMP_FORCE = 5.6f;
-    private final int MAX_HEALTH = 3;
+    private final int MAX_HEALTH = 4;
     private final int MAX_POWERUP = 3;
     private final Class NEXT_LEVEL = WinSplash.class;
     private int delay;
@@ -50,7 +50,7 @@ public class Level3 extends World
         addObject(new Floor(), 600, 800);
         addObject(new BrickWall(), 504, 565);
         addObject(new SmBrickWall(), 1037, 687);
-        addObject(new SmBrickWall(), 900, 409);
+        addObject(new SmBrickWall(), 900, 416);
         addObject(new SmBrickWall(), 175,438);
         addObject(new AcidRain(GRAVITY), 50, 21);
         addObject(new Rock(GRAVITY), 490, 0);
@@ -70,7 +70,7 @@ public class Level3 extends World
         addObject(gem3,668,170);
         gem3.setLocation(970,163);
     }
-    
+    //spawns various objects
     private void spawn()
     {
         if(Math.random() < 0.0020)
@@ -92,6 +92,14 @@ public class Level3 extends World
         if(delay % 130 == 0)
         {
             addObject(new Arrow(GRAVITY), 1130, 310);
+        }
+        
+        if(delay % 900 == 0)
+        {
+            addObject(new Gem(), 230, 102);
+            addObject(new Gem(), 450, 300);
+            addObject(new Gem(), 970, 163);
+        
         }
     }
 }

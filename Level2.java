@@ -49,7 +49,7 @@ public class Level2 extends World
         addObject(new Floor(), 600, 800);
         addObject(new SmBrickWall(), 843, 583);
         addObject(new SmBrickWall(), 1121, 468);
-        addObject(new HealingFish(), 1137, 387);
+        
         addObject(new BrickWall(), 424, 444);
         addObject(new SmBrickWall(), 409, 736);
         addObject(new SmBrickWall(), 624, 651);
@@ -80,7 +80,7 @@ public class Level2 extends World
         addObject(crossbow4,1142,201);
 
     }
-    
+    //spawns various objects
     private void spawn()
     {   
         delay++;
@@ -100,6 +100,13 @@ public class Level2 extends World
         {
             addObject(new Arrow(GRAVITY), 1108, 548);
             addObject(new Arrow(GRAVITY), 1112, 201);
+        }
+        
+        if(delay % 900 == 0)
+        {
+            addObject(new Gem(), 130, 208);
+            addObject(new Gem(), 857,102);
+        
         }
     }
 }
